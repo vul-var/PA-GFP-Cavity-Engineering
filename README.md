@@ -1,11 +1,11 @@
-# PA-GFP Cavity Engineering 🧬
+# PA-GFP Cavity Engineering
 
 **Computational modeling of steric cavities in Photoactivatable GFP using PyMOL**
 
 ## Overview
 This repository contains the PyMOL scripts and structural analysis data for a computational study on Photoactivatable Green Fluorescent Protein (PA-GFP). The project investigates the structural limits of photoactivation by engineering internal steric cavities around the chromophore. 
 
-## The "So What?"
+## The Importance
 PA-GFP is a critical tool for super-resolution microscopy, allowing researchers to illuminate specific proteins with precise spatiotemporal control. However, the efficiency of this light-induced activation depends heavily on the physical space (steric environment) surrounding the chromophore. 
 
 By applying classic cavity-creation methodologies from T4 Lysozyme to PA-GFP, this project maps exactly how much internal cavity volume can be engineered while maintaining chromophore accessibility. Ultimately, this provides a structural framework for designing next-generation fluorescent probes that require lower UV exposure, reducing cellular damage during live-cell imaging.
