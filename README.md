@@ -10,7 +10,7 @@ PA-GFP is a critical tool for super-resolution microscopy, allowing researchers 
 
 By applying classic cavity-creation methodologies from T4 Lysozyme to PA-GFP, this project maps exactly how much internal cavity volume can be engineered while maintaining chromophore accessibility. Ultimately, this provides a structural framework for designing next-generation fluorescent probes that require lower UV exposure, reducing cellular damage during live-cell imaging.
 
-## Key Findings
+## Key Findings (TBD)
 - **Baseline Control:** The well-characterized T203H mutation maintains a tight spatial distance of **3.3 Å** to the chromophore.
 - **Novel Mutation:** Engineering the **F153A** mutation removes a bulky phenylalanine residue, creating a substantial internal cavity.
 - **Structural Shift:** This mutation significantly expands the distance to the chromophore to **13.3 Å**.
