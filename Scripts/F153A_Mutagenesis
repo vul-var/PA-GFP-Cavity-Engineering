@@ -35,7 +35,7 @@ wizard 0
 # 5. Measure Mutant Distance to Chromophore
 # Measuring the new residue 153 to the chromophore
 distance mutant_dist, resi 153, chromo
-# Expected result: ~13.3 Å (Expanded cavity)
+# Expected result: ~13.2 Å (Expanded cavity)
 
 # 6. Visualize the Cavity and Steric Environment
 select f153a, resi 153
