@@ -4,17 +4,25 @@
 
 # 1. Initialize and Load Structure
 reinitialize
-# Load the specific baseline file you saved
-load t203h_baseline.pdb, pagfp
+# Added ', pagfp' so the rest of the script knows what object to look at!
+load T203H_baseline.pdb, pagfp
 
 # 2. Basic Visualization Setup
-hide everything, pagfp
+hide everything
 show cartoon, pagfp
-show sticks, resn CHR  # Show the chromophore in stick representation
+select chromo, resi 65-67
+show sticks, chromo
+color green, chromo
+
+# --- Show the T203H Baseline Residue ---
+select t203h, resi 203
+show sticks, t203h
+color magenta, t203h
 
 # 3. Establish Baseline (T203H)
-# Measure baseline distance to chromophore 
-distance baseline_dist, /pagfp//A/203/CA, /pagfp//A/CHR/CA
+# Measuring directly between your two selections!
+distance baseline_dist, t203h, chromo
+# If gives multiple numbers, undo and use measurement wizard from closest amino acids
 # Expected result: ~3.3 Å
 
 # 4. Engineer Novel F153A Mutation
@@ -25,13 +33,14 @@ apply
 wizard 0
 
 # 5. Measure Mutant Distance to Chromophore
-distance mutant_dist, /pagfp//A/153/CA, /pagfp//A/CHR/CA
+# Measuring the new residue 153 to the chromophore
+distance mutant_dist, resi 153, chromo
 # Expected result: ~13.3 Å (Expanded cavity)
 
 # 6. Visualize the Cavity and Steric Environment
-# Show the mutated residue in sticks to see the new empty space
-show sticks, resi 153
-color yellow, resi 153
+select f153a, resi 153
+show sticks, f153a
+color yellow, f153a
 
 # 7. Save the Final Mutated Structure
 save F153A_PA-GFP_Mutant.pdb, pagfp
