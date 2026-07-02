@@ -9,42 +9,29 @@ load T203H_baseline.pdb, pagfp
 
 # 2. Basic Visualization Setup
 hide everything
-show cartoon, pagfp
 select chromo, resi 65-67
 show sticks, chromo
 color green, chromo
 
-# --- Show the T203H Baseline Residue ---
-select t203h, resi 203
-show sticks, t203h
-color magenta, t203h
-
-# 3. Establish Baseline (T203H)
-# Measuring directly between your two selections!
-distance baseline_dist, t203h, chromo
-# If gives multiple numbers, undo and use measurement wizard from closest amino acids
-# Expected result: ~3.3 Å
-
 # 4. Engineer Novel F153A Mutation
 wizard mutagenesis
-mutagenesis 153, ALA
-# (Note: In the GUI, select the best rotamer to minimize clashes, then apply)
+alter resi 153, resn='ALA'
 apply
-wizard 0
 
-# 5. Measure Mutant Distance to Chromophore
+# 5. Visualize the Cavity and Steric Environment
+select f153a, resi 153
+show sticks, f153a
+color red, f153a
+
+# 6. Measure Mutant Distance to Chromophore
 # Measuring the new residue 153 to the chromophore
 distance mutant_dist, resi 153, chromo
 # Expected result: ~13.2 Å (Expanded cavity)
-
-# 6. Visualize the Cavity and Steric Environment
-select f153a, resi 153
-show sticks, f153a
-color yellow, f153a
 
 # 7. Save the Final Mutated Structure
 save F153A_PA-GFP_Mutant.pdb, pagfp
 
 # 8. Render a high-quality image for the paper
 ray 1200, 1200
-png F153A_Cavity_Visualization.png
+png F153A_chromo_distance.png, width=2000, height=2000, dpi=300
+#  ^ Add folder name of where you want to save to here
