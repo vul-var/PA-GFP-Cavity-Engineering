@@ -1,0 +1,46 @@
+# PA-GFP S99A Cavity Engineering Script
+# Author: Shen Khaw
+# Project: Computational Prediction of Steric Cavities in PA-GFP
+
+# 1. Initialize and Load Structure
+reinitialize
+load T203H_baseline.pdb, pagfp
+
+# 2. Background settings
+bg_color white
+set fog, off
+set depth_cue, off
+
+# 3. Basic Visualization Setup
+hide everything
+select chromo, resi 65-67
+show sticks, chromo
+color green, chromo
+
+# 4. Engineer Novel S99A Mutation
+wizard mutagenesis
+alter resi 99, resn='ALA'
+
+# 5. Visualize the Cavity and Steric Environment
+select s99a, resi 99
+show sticks, s99a
+color marine, s99a
+
+# 6. Measure Mutant Distance to Chromophore
+distance mutant_dist, resi 99, chromo
+# Expected result: ~12.9 Å (Expanded cavity)
+# Note: PyMOL calculates all atom-to-atom distances between these residues.
+# To get a single clean measurement line for the final figure:
+# 1. Click the 'Measurement' wizard in the GUI.
+# 2. Click the protruding part of the red residue (99).
+# 3. Click the double-lined amino acid of the green chromophore (65-67).
+# 4. The single distance will appear.
+
+# 7. Save the Final Mutated Structure
+set label_size, 30
+save S99A_PA-GFP_Mutant.pdb, pagfp
+
+# 8. Render a high-quality image
+ray
+png S99A_chromo_distance.png, width=2000, height=2000, dpi=300
+#  ^ Add folder name
