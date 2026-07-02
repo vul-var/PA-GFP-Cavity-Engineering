@@ -7,7 +7,12 @@ reinitialize
 # Added ', pagfp' so the rest of the script knows what object to look at!
 load T203H_baseline.pdb, pagfp
 
-# 2. Basic Visualization Setup
+# 2. Background settings
+bg_color white
+set fog, off
+set depth_cue, off
+
+# 3. Basic Visualization Setup
 hide everything
 select chromo, resi 65-67
 show sticks, chromo
@@ -24,14 +29,19 @@ show sticks, f153a
 color red, f153a
 
 # 6. Measure Mutant Distance to Chromophore
-# Measuring the new residue 153 to the chromophore
 distance mutant_dist, resi 153, chromo
 # Expected result: ~13.2 Å (Expanded cavity)
+# Note: PyMOL calculates all atom-to-atom distances between these residues.
+# To get a single clean measurement line for the final figure:
+# 1. Click the 'Measurement' wizard in the GUI.
+# 2. Click the potruding part of the red residue (153).
+# 3. Click the double-lined amino acid of the green chromophore (65-67).
+# 4. The single distance (~13.2 Å) will appear.
 
 # 7. Save the Final Mutated Structure
 save F153A_PA-GFP_Mutant.pdb, pagfp
 
-# 8. Render a high-quality image for the paper
-ray 1200, 1200
+# 8. Render a high-quality image
+ray
 png F153A_chromo_distance.png, width=2000, height=2000, dpi=300
 #  ^ Add folder name of where you want to save to here
